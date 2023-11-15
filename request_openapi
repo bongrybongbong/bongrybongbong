@@ -1,0 +1,29 @@
+import requests
+
+# API 엔드포인트 URL
+url ="https://apis.data.go.kr/B551014/SRVC_OD_API_CRA_RACE_RESULT/TODZ_API_CRA_RACE_RESULT_I"
+
+# 인코딩된 인증 키 (실제 사용)
+encoded_key = "-"
+
+# 디코딩된 인증 키 
+decoded_key = "-"
+
+# 요청할 때 사용할 파라미터 설정
+params = {
+    'serviceKey': decoded_key,
+    'pageNo': '1',
+    'numOfRows': '10',
+    'resultType': 'json',
+    'stnd_yr': '2015',
+    'meet_nm': '광명',
+    'week_tcnt': '45',
+    'day_tcnt': '3',
+    'race_no': '14'
+}
+
+# GET 요청을 보내고 응답 받기
+response = requests.get(url, params=params)
+
+# 응답 내용 출력
+print(response.text)
