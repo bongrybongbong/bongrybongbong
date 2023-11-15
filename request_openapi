@@ -1,4 +1,6 @@
 import requests
+import pandas as pd
+from pandas import json_normalize
 
 # API 엔드포인트 URL
 url ="https://apis.data.go.kr/B551014/SRVC_OD_API_CRA_RACE_RESULT/TODZ_API_CRA_RACE_RESULT_I"
@@ -25,5 +27,7 @@ params = {
 # GET 요청을 보내고 응답 받기
 response = requests.get(url, params=params)
 
-# 응답 내용 출력
-print(response.text)
+# 데이터 프레임으로 보기 
+data = response.json()
+df=json_normalize(data['response']['body']['items']['item'])
+df 
